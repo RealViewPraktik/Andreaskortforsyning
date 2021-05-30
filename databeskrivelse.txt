@@ -1,0 +1,37 @@
+Footprint image databeskrivelse
+
+Kilde kortforynigens eget dokument "Annex Q.3 Technical Specifications for Oblique Photography"
+
+
+
+| Attribute_name | Attribute_description 						       |
+|----------------------------------------------------------------------------------------------|
+| imageid      	 | The ID of the image                                                         |
+| easting      	 | The cameras easting coordinate                                              |
+| northing     	 | The cameras northing coordinate                                             |
+| height       	 | The cameras hight above surface                                             |
+| omega        	 | The planes rotation around the X axis (Roll)                                |
+| phi          	 | The Planes rotation around the Y axis (Pitch)                               |
+| kappa        	 | The planes rotation around the Z axis (Yaw)                                 |
+| direction    	 | The direction the camera was facing                                         |
+| timeutc      	 | Timestamp ISO 8601: 2021-03-20T18:05:48                                     |
+| cameraid     	 | Link to the unique IO in the Camera IO file                                 |
+| coneid       	 | id of specific camera cone                                                  |
+| estacc       	 | Root Mean Square Error XY to ground                                         |
+| height_eli   	 | Ellipsoidal altitude (mathematical approximation of the shape of the Earth) |
+| timecet      	 | Timestamp Central European Time                                             |
+| references   	 | Coordiante reference systems                                                |
+| producer     	 |                                                                             |
+| level        	 |                                                                             |
+| comment_co   	 | Clouds and sunangle                                                         |
+| comment_gs   	 |                                                                             |
+| gsd          	 | Ground Sampling Distance                                                    |
+| path         	 |                                                                             |
+| hist_low     	 |                                                                             |
+| hist_high    	 |                                                                             |
+| sunangle     	 |                                                                             |
+| indenfor_bl  	 |                                                                             |
+| kystnært_      |                                                                             |
+| centroid_t   	 | Billedets filmappe                                                          |
+| wkb_geometry 	 | Billedets geometri box i Well-Known Binary                                  |
+  
