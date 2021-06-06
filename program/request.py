@@ -1,6 +1,3 @@
-
-
-
 class order:
     def __init__(self, orderID, images_directory, email, location):
         self.orderID = orderID

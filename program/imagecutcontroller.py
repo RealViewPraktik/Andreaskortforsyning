@@ -113,13 +113,14 @@ def find_point_on_image(images,location, order):
         width, height = get_image_width_height(image[2], image[3])
         dst = np.array([[0,0],[(width-1),0],[0,(height-1)],[(width-1),(height-1)]], dtype='float32')
         M = cv2.getPerspectiveTransform(src, dst)
+        print(M)
         result = homo_to_eucli(M.dot(point))
         
         cut_and_save_location(image, result, order, path)
         order.image_directory = path
  
 def cut_and_save_location(image, pointPx, order, path):
-    x =round(pointPx[0])
+    x =round(pointPx[1])
     y =round(pointPx[1])
     centroid_t = image[5]
     imageid = image[0]
@@ -129,7 +130,8 @@ def cut_and_save_location(image, pointPx, order, path):
     try:
         my_image=cv2.imread(f"/home/plandata/Andreas/program/data/temp/tempdisc/{centroid_t}/{imageid}.jpg", 1)
         print(type(my_image))
-        my_image = my_image[y-350:y+350, x-350:x+350]
+        my_image = cv2.circle(my_image,(x ,y), 25, (255,0,0), -1)
+        my_image = my_image[y-650:y+650, x-650:x+650]
         cv2.imwrite(f'{path}/{orderid}_{imageid}_{direction}.jpg', my_image) 
     except:
         print('location to close to edge; did not cut')
@@ -141,19 +143,22 @@ def run_imagecutcontroller(location, email):
     
     footprints = [];    
     images = get_image_list(location)
+    print(len(images))
     for imageid in images:      
         footprint = DBF.get_footprint_from_db(imageid)
         footprints.append(footprint)     
-    valid_images = get_images_for_point(location, footprints)    
+    valid_images = get_images_for_point(location, footprints)
+    print(len(valid_images))    
     find_point_on_image(valid_images,location, new_order)        
 
     DBF.update_order(new_order)
     
     return new_order
 
-location = [711222, 6175207]
+#location = [711222, 6175207]
 #location = [711947, 6175284]
-#ocation = [710874,6175679]
+#location = [710874,6175679]
+location = [711544, 6175343]
 run_imagecutcontroller(location, 'jaja@jaja.co')
 
 
