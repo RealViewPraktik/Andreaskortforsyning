@@ -23,7 +23,5 @@ def create_order(order):
 
 def update_order(order):
     DBC.update_order(order)
-
-
-
-
+def get_order(orderid):
+    DBC.get_orcer(orderid)

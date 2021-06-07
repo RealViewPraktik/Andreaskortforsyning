@@ -4,6 +4,7 @@ import psycopg2
 from psycopg2 import Error
 import cv2
 import numpy as np
+import kafkamailproducer as kmp
 
 import os
 
@@ -152,14 +153,14 @@ def run_imagecutcontroller(location, email):
     find_point_on_image(valid_images,location, new_order)        
 
     DBF.update_order(new_order)
+    kmp.send_order(new_order.orderID, new_order.email)    
     
-    return new_order
 
 #location = [711222, 6175207]
 #location = [711947, 6175284]
 #location = [710874,6175679]
-location = [711544, 6175343]
-run_imagecutcontroller(location, 'jaja@jaja.co')
+#location = [711544, 6175343]
+#run_imagecutcontroller(location, 'jaja@jaja.co')
 
 
 
