@@ -25,3 +25,5 @@ try:
         ICF.get_requested_images(location, email)
 except KeyboardInterrupt:
     sys.exit()
+except:
+    print('Something bad happend in consumer')

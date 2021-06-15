@@ -11,8 +11,8 @@ producer = KafkaProducer(bootstrap_servers='localhost:9092')
 
 def send_locations(location, email):
     producer = KafkaProducer(value_serializer=lambda m: json.dumps(m).encode('ascii'))
-    producer.send(topicName, {'location': location, 'email': email})
-
+    id = producer.send(topicName, {'location': location, 'email': email})
+    return id
 
 
 location = [711544, 6175343]

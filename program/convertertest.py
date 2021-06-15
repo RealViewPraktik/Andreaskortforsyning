@@ -67,7 +67,7 @@ def convert_lon_lat_to_grid(point):
     return grid;
 
 
-def run_imagecutcontroller(location, email):
+#def run_imagecutcontroller(location, email):
     location = np.array([[location[0]], [location[1]]])
     footprints = [];
     images = get_image_list(location)
@@ -114,7 +114,7 @@ def find_point_on_image(images,location):
             if image[3] == '501':
                 src = np.array([[poly[3]],[poly[0]],[poly[2]],[poly[1]]])
 
-        width, height = get_image_width_height(image[2], image[3])
+        #width, height = get_image_width_height(image[2], image[3])
         dst = np.array([[0,0],[(width-1),0],[0,(height-1)],[(width-1),(height-1)]], dtype='float32')
        
         #M= cv2.getPerspectiveTransform(src, dst)

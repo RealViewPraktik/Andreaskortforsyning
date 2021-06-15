@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>orders</title>        
+    </head>
+    <body>        
+        <div>
+            <ul>
+            {% for order in orders %}
+               <li> {{order[0]}} {{order[1]}}, {{order[2]}}. {{order[5]}}</li>
+            {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>
+

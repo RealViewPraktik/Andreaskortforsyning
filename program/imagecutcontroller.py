@@ -130,31 +130,35 @@ def cut_and_save_location(image, pointPx, order, path):
 
     try:
         my_image=cv2.imread(f"/home/plandata/Andreas/program/data/temp/tempdisc/{centroid_t}/{imageid}.jpg", 1)
-        print(type(my_image))
-        my_image = cv2.circle(my_image,(x ,y), 25, (255,0,0), -1)
+        #print(type(my_image))
+        #my_image = cv2.circle(my_image,(x ,y), 25, (255,0,0), -1)
         my_image = my_image[y-650:y+650, x-650:x+650]
         cv2.imwrite(f'{path}/{orderid}_{imageid}_{direction}.jpg', my_image) 
     except:
         print('location to close to edge; did not cut')
 
 def run_imagecutcontroller(location, email):
-    new_order = order(None, None, email, location)
-    location = np.array([[location[0]], [location[1]]])
-    DBF.create_order(new_order)
+    try:
+        new_order = order(None, None, email, location)
+        location = np.array([[location[0]], [location[1]]])
+        print(location)
+        DBF.create_order(new_order)
     
-    footprints = [];    
-    images = get_image_list(location)
-    print(len(images))
-    for imageid in images:      
-        footprint = DBF.get_footprint_from_db(imageid)
-        footprints.append(footprint)     
-    valid_images = get_images_for_point(location, footprints)
-    print(len(valid_images))    
-    find_point_on_image(valid_images,location, new_order)        
+        footprints = [];    
+        images = get_image_list(location)
+        print(len(images))
+        for imageid in images:      
+            footprint = DBF.get_footprint_from_db(imageid)
+            footprints.append(footprint)     
+        valid_images = get_images_for_point(location, footprints)
+        print(len(valid_images))    
+        find_point_on_image(valid_images,location, new_order)        
 
-    DBF.update_order(new_order)
-    kmp.send_order(new_order.orderID, new_order.email)    
-    
+        DBF.update_order(new_order)
+        kmp.send_order(new_order.orderID, new_order.email)
+        return id    
+    except:
+        print('something bad happend')
 
 #location = [711222, 6175207]
 #location = [711947, 6175284]

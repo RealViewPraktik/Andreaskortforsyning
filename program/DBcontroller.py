@@ -95,5 +95,22 @@ def get_order(orderid):
             conn.close()
             print("PostgreSQL connection is closed")
 
+def get_orders():
+    try:
+        conn = psycopg2.connect(user="plandata", password="sejl44skib", host="localhost", port="5432", database="plandata")
+        cursor = conn.cursor()
+        select_query =f"SELECT * from footprints.orders"
+        cursor.execute(select_query)
+        data = cursor.fetchall()
+        return data
+    except(Exception, Error) as error:
+        print("Error while connecting to PostgreSQL", error)
+    finally:
+        if(conn):
+            cursor.close()
+            conn.close()
+            print("PostgreSQL connection is closed")
 
- 
+
+
+
