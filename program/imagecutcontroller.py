@@ -120,7 +120,7 @@ def find_point_on_image(images,location, order):
         order.image_directory = path
  
 def cut_and_save_location(image, pointPx, order, path):
-    x =round(pointPx[1])
+    x =round(pointPx[0])
     y =round(pointPx[1])
     centroid_t = image[5]
     imageid = image[0]
