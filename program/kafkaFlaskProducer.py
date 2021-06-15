@@ -15,11 +15,11 @@ def send_locations(location, email):
     return id
 
 
-location = [711544, 6175343]
-email = 'test@test.com'
+#location = [711544, 6175343]
+#email = 'test@test.com'
 
 
-send_locations(location, email)
+#send_locations(location, email)
 
 
 

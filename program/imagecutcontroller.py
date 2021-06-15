@@ -132,7 +132,7 @@ def cut_and_save_location(image, pointPx, order, path):
         my_image=cv2.imread(f"/home/plandata/Andreas/program/data/temp/tempdisc/{centroid_t}/{imageid}.jpg", 1)
         #print(type(my_image))
         #my_image = cv2.circle(my_image,(x ,y), 25, (255,0,0), -1)
-        my_image = my_image[y-650:y+650, x-650:x+650]
+        my_image = my_image[y-350:y+350, x-350:x+350]
         cv2.imwrite(f'{path}/{orderid}_{imageid}_{direction}.jpg', my_image) 
     except:
         print('location to close to edge; did not cut')

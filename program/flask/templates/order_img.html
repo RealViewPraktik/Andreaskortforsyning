@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Ordre billedr </title>        
+    </head>
+    <body>
+        <h>These ar your Images for order {{ orderid }}</h>
+        <div>    
+            {%for image_name in image_names%}
+            <img src="{{url_for('show_images', filename=image_name, orderid=orderid)}}" width=10% height=10%>
+            {{image_name[-5]}}
+            {%endfor%}    
+        </div>
+    </body>
+</html>
